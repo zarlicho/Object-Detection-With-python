@@ -54,13 +54,8 @@ while True:
     blob = cv.dnn.blobFromImage(img,1/255,(wht, wht),[0,0,0],1,crop=False)
     net.setInput(blob)
     layerNames = net.getLayerNames()
-    #print(layerNames)
     outputNames = [layerNames[i[0]-1] for i in net.getUnconnectedOutLayers()]
     outputs = net.forward(outputNames)
-    #print(outputs[0].shape)
-    #print(outputs[1].shape)
-    #print(outputs[2].shape)
-    #print(outputs[0][0])
     finObjects(outputs, img)
     cv.imshow('frame', img)
     cv.waitKey(1)
